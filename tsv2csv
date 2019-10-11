@@ -1,0 +1,21 @@
+#!/usr/bin/env clojure
+
+(ns tsv2csv
+  (:require [clojure.string :refer [trim join split]]))
+
+(defn stdin-lazy-seq []
+  (when-let [line (read-line)]
+    (lazy-seq (cons line (stdin-lazy-seq)))))
+
+(defn wrap-double-quotes [s] (format "\"%s\"" s))
+
+(run!
+ (fn [line]
+   (-> line
+       (split (re-pattern #"\t"))
+       (->> (mapv #(->> %
+                        trim
+                        wrap-double-quotes))
+            (join #","))
+       println))
+ (stdin-lazy-seq))
