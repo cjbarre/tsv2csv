@@ -3,7 +3,7 @@ A TSV to CSV command line tool powered by Clojure
 
 ## Rationale
 
-I created this to satisfy a personal need to convert TSV to CSV and I had a previous implementation of the same functionality laying around in a fully fledged Clojure project. I'd rather right a smidge of LISP sometimes than use existing tools with wonky interfaces like sed and awk ( sorry :-) ).
+I created this to satisfy a personal need to convert TSV to CSV and I had a previous implementation of the same functionality laying around in a fully fledged Clojure project. I'd rather write a smidge of LISP sometimes than use existing tools with wonky interfaces like sed and awk ( sorry :-) ).
 
 ## Features
 
