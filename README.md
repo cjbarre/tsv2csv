@@ -5,22 +5,6 @@ A TSV to CSV command line tool powered by Clojure
 
 I created this to satisfy a personal need to convert TSV to CSV and I had a previous implementation of the same functionality laying around in a fully fledged Clojure project. I'd rather right a smidge of LISP sometimes than use existing tools with wonky interfaces like sed and awk ( sorry :-) ).
 
-## Dependencies
-
-- Clojure CLI: https://clojure.org/guides/getting_started
-
-## Platforms
-
-- Linux
-
-## Bugs
-
-Create an issue if you find yourself using this and have trouble.
-
-## License
-
-License is MIT
-
 ## Usage
 
 Sample Example:
@@ -39,6 +23,8 @@ Real Example using BLS data:
 ```
 wget https://download.bls.gov/pub/time.series/ce/ce.datatype -q -O - | ./tsv2csv
 
+=>
+
 "data_type_code","data_type_text"
 "01","ALL EMPLOYEES, THOUSANDS"
 "02","AVERAGE WEEKLY HOURS OF ALL EMPLOYEES"
@@ -50,3 +36,29 @@ wget https://download.bls.gov/pub/time.series/ce/ce.datatype -q -O - | ./tsv2csv
 "09","AVERAGE WEEKLY OVERTIME HOURS OF PRODUCTION AND NONSUPERVISORY EMPLOYEES"
 ...
 ```
+
+## Dependencies
+
+- Clojure CLI: https://clojure.org/guides/getting_started
+
+## Platforms
+
+- Linux
+
+## Performance
+
+At the time I was creating a pipeline to automatically generate BLS databases from TSV dumps. This tool is designed to be used in a streaming pipeline, which you will see a real example of down below. It may depend on your network bandwidth, but for me in a pipeline with wget and pgfutter for loading a CSV into PostgreSQL, a TSV file with over seven million rows flows from the remote server into my database in around one minute. I use tsv2csv with GNU parallel to create / load every table in the database as quickly as possible in a single pass.
+
+I'll have to check soon how fast the pipeline goes when the entire data file is already on the local system.
+
+## Bugs & Suggestions
+
+Create an issue if you find yourself using this and have trouble or have an idea.
+
+## License
+
+License is MIT
+
+## Maintainer
+
+Cameron Barre
