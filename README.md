@@ -7,7 +7,7 @@ I created this to satisfy a personal need to convert TSV to CSV and I had a prev
 
 ## Features
 
-- Replaces Tabs with commas
+- Replaces tabs with commas
 - Trims whitespace around values
 - Wraps all values in double quotes
 
