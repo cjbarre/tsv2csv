@@ -47,7 +47,7 @@ wget https://download.bls.gov/pub/time.series/ce/ce.datatype -q -O - | ./tsv2csv
 
 ## Performance
 
-At the time I was creating a pipeline to automatically generate BLS databases from TSV dumps. This tool is designed to be used in a streaming pipeline, which you will see a real example of down below. It may depend on your network bandwidth, but for me in a pipeline with wget and pgfutter for loading a CSV into PostgreSQL, a TSV file with over seven million rows flows from the remote server into my database in around one minute. I use tsv2csv with GNU parallel to create / load every table in the database as quickly as possible in a single pass.
+At the time I was creating a pipeline to automatically generate BLS databases from TSV dumps. This tool is designed to be used in a streaming pipeline, which you can see a real example of above. It may depend on your network bandwidth, but for me in a pipeline with wget and pgfutter for loading a CSV into PostgreSQL, a TSV file with over seven million rows flows from the remote server into my database in around one minute. I use tsv2csv with GNU parallel to create / load every table in the database as quickly as possible in a single pass.
 
 I'll have to check soon how fast the pipeline goes when the entire data file is already on the local system.
 
