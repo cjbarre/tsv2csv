@@ -11,11 +11,10 @@
 
 (run!
  (fn [line]
-   (-> line
-       (split (re-pattern #"\t"))
-       (->> (mapv #(->> %
-                        trim
-                        wrap-double-quotes))
-            (join #","))
-       println))
+   (->> (split line (re-pattern #"\t"))
+        (mapv #(->> %
+                    trim
+                    wrap-double-quotes))
+        (join ",")
+        println))
  (stdin-lazy-seq))
